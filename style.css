@@ -1,167 +1,134 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    height: 100vh;
-    background: #020617;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
-}
-
-
-.ekran {
-    text-align: center;
-    cursor: pointer;
+body{
+    height:100vh;
+    background:#020617;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    font-family:Arial;
 }
 
 
-.yazi-alan {
-    position: relative;
+.ekran{
+    text-align:center;
+    cursor:pointer;
 }
 
 
-h1 {
-    color: white;
-    font-size: 45px;
-    animation: yaziparla 2s infinite alternate;
+.yazi-alan{
+    position:relative;
 }
 
 
-/* Uçan kalpler */
-
-.ucan {
-    position: absolute;
-    font-size: 25px;
-    animation: ucus 3s infinite ease-in-out;
+h1{
+    color:white;
+    font-size:45px;
 }
 
 
-.kalp1 {
-    left: -60px;
-    top: 10px;
-    animation-delay: 0s;
+.ucan{
+    position:absolute;
+    font-size:25px;
+    animation:uc 3s infinite;
 }
 
 
-.kalp2 {
-    right: -60px;
-    top: 20px;
-    animation-delay: 1s;
+.ucan:nth-child(2){
+    left:-60px;
 }
 
 
-.kalp3 {
-    left: -30px;
-    top: -50px;
-    animation-delay: 1.5s;
+.ucan:nth-child(3){
+    right:-60px;
+    animation-delay:1s;
 }
 
 
-.kalp4 {
-    right: -30px;
-    top: -40px;
-    animation-delay: 2s;
+.ucan:nth-child(4){
+    left:-30px;
+    top:-40px;
+    animation-delay:1.5s;
 }
 
 
-@keyframes ucus {
+.ucan:nth-child(5){
+    right:-30px;
+    top:-40px;
+    animation-delay:2s;
+}
 
-    0% {
-        transform: translateY(20px) scale(0.7);
-        opacity: 0;
+
+@keyframes uc{
+
+    0%{
+        opacity:0;
+        transform:translateY(20px);
     }
 
-    50% {
-        transform: translateY(-20px) scale(1.2);
-        opacity: 1;
+    50%{
+        opacity:1;
+        transform:translateY(-30px);
     }
 
-    100% {
-        transform: translateY(-70px) scale(0.7);
-        opacity: 0;
+    100%{
+        opacity:0;
+        transform:translateY(-70px);
     }
 
 }
 
 
-@keyframes yaziparla {
+/* Kalp */
 
-    from {
-        opacity: 0.6;
-        text-shadow: 0 0 10px #ffffff;
-    }
+.kalp{
 
-    to {
-        opacity: 1;
-        text-shadow: 0 0 30px #4f8cff;
-    }
+    display:none;
+    width:150px;
+    height:150px;
+    background:#001f5b;
+    transform:rotate(-45deg);
+    position:relative;
+    margin:auto;
+    animation:nefes 1.5s infinite;
+    box-shadow:0 0 50px #004cff;
 
-}
-
-
-/* Lacivert nefes alan kalp */
-
-.kalp {
-    display: none;
-    width: 150px;
-    height: 150px;
-    background: #001f5b;
-    position: relative;
-    margin: auto;
-    transform: rotate(-45deg);
-    animation: nefes 1.5s infinite ease-in-out;
-    box-shadow: 0 0 50px #004cff;
 }
 
 
 .kalp::before,
-.kalp::after {
+.kalp::after{
 
-    content: "";
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    background: #001f5b;
-    border-radius: 50%;
+    content:"";
+    position:absolute;
+    width:150px;
+    height:150px;
+    background:#001f5b;
+    border-radius:50%;
 
 }
 
 
-.kalp::before {
-    top: -75px;
-    left: 0;
+.kalp::before{
+    top:-75px;
 }
 
 
-.kalp::after {
-    left: 75px;
-    top: 0;
+.kalp::after{
+    left:75px;
 }
 
 
-@keyframes nefes {
 
-    0% {
-        transform: rotate(-45deg) scale(1);
-        box-shadow: 0 0 30px #004cff;
-    }
+@keyframes nefes{
 
-
-    50% {
-        transform: rotate(-45deg) scale(1.15);
-        box-shadow: 0 0 80px #0066ff;
-    }
-
-
-    100% {
-        transform: rotate(-45deg) scale(1);
-        box-shadow: 0 0 30px #004cff;
+    50%{
+        transform:rotate(-45deg) scale(1.15);
     }
 
 }
