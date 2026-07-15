@@ -2,47 +2,122 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
+    background:linear-gradient(135deg,#000000,#081f4d);
     overflow:hidden;
-    background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+    width:100vw;
+    height:100vh;
+}
+
+/* İlk Sayfa */
+
+#intro{
+    width:100%;
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-family:Arial,sans-serif;
-}
-
-.mesaj{
+    flex-direction:column;
     color:white;
-    text-align:center;
-    z-index:100;
+    cursor:pointer;
+    transition:.8s;
 }
 
-h1{
-    font-size:60px;
+#intro h1{
+    font-size:70px;
+    text-shadow:0 0 25px red;
 }
 
-p{
-    font-size:25px;
-    margin-top:15px;
+#intro p{
+    margin-top:20px;
+    font-size:22px;
+    opacity:.8;
 }
+
+/* Kalp Sayfası */
+
+.hidden{
+    display:none;
+}
+
+#heartScreen{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+/* Büyük Kalp */
 
 .heart{
-    position:absolute;
-    color:red;
-    animation:uc 6s linear forwards;
-    user-select:none;
+    width:220px;
+    height:220px;
+    position:relative;
+    transform:rotate(-45deg);
+    background:linear-gradient(
+        90deg,
+        #000000 50%,
+        #0b3d91 50%
+    );
+    animation:beat 1s infinite;
+    box-shadow:0 0 40px #0b3d91;
 }
 
-@keyframes uc{
+.heart::before,
+.heart::after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:inherit;
+}
+
+.heart::before{
+    top:-110px;
+    left:0;
+}
+
+.heart::after{
+    left:110px;
+    top:0;
+}
+
+@keyframes beat{
+
     0%{
-        transform:translateY(0) scale(0.5);
-        opacity:1;
+        transform:rotate(-45deg) scale(1);
     }
+
+    50%{
+        transform:rotate(-45deg) scale(1.1);
+    }
+
     100%{
-        transform:translateY(-110vh) scale(1.5);
-        opacity:0;
+        transform:rotate(-45deg) scale(1);
     }
+
+}
+
+/* Yazı */
+
+#heartScreen h2{
+    color:white;
+    margin-top:80px;
+    font-size:35px;
+    text-shadow:0 0 15px white;
+}
+
+/* Küçük Kalpler */
+
+.floating-heart{
+    position:absolute;
+    pointer-events:none;
+    z-index:999;
+    filter:drop-shadow(0 0 10px red);
 }
