@@ -1,18 +1,18 @@
-window.onload = () => {
+function kalbiGoster() {
 
-    const kalp = document.querySelector(".kalp");
-    const yazi = document.querySelector("h1");
+    const yazi = document.getElementById("yazi");
+    const kalp = document.getElementById("kalp");
+    const kalpler = document.querySelectorAll(".ucan");
 
-    kalp.style.opacity = "0";
-    yazi.style.opacity = "0";
+    // Yazıyı gizle
+    yazi.style.display = "none";
 
-    setTimeout(() => {
-        kalp.style.transition = "1.5s";
-        yazi.style.transition = "1.5s";
+    // Uçan kalpleri gizle
+    kalpler.forEach(kalp => {
+        kalp.style.display = "none";
+    });
 
-        kalp.style.opacity = "1";
-        yazi.style.opacity = "1";
+    // Büyük kalbi göster
+    kalp.style.display = "block";
 
-    }, 500);
-
-};
+}
