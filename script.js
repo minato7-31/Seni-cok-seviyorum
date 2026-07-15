@@ -1,11 +1,23 @@
-const ekran = document.getElementById("ekran");
-const yaziAlan = document.getElementById("yaziAlan");
-const kalp = document.getElementById("kalp");
+function kalbiAc(){
 
-ekran.addEventListener("click", () => {
+    const giris = document.getElementById("giris");
+    const kalp = document.getElementById("kalp");
 
-    yaziAlan.style.display = "none";
 
-    kalp.style.display = "block";
+    giris.style.animation = "gelis 1s reverse";
 
-});
+
+    setTimeout(()=>{
+
+
+        giris.style.display="none";
+
+
+        kalp.style.display="block";
+
+
+    },700);
+
+
+
+}
