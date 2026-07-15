@@ -1,0 +1,48 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(135deg,#ff4d6d,#ff8fab);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial,sans-serif;
+}
+
+.mesaj{
+    color:white;
+    text-align:center;
+    z-index:100;
+}
+
+h1{
+    font-size:60px;
+}
+
+p{
+    font-size:25px;
+    margin-top:15px;
+}
+
+.heart{
+    position:absolute;
+    color:red;
+    animation:uc 6s linear forwards;
+    user-select:none;
+}
+
+@keyframes uc{
+    0%{
+        transform:translateY(0) scale(0.5);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-110vh) scale(1.5);
+        opacity:0;
+    }
+}
