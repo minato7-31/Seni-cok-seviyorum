@@ -1,64 +1,18 @@
-const intro = document.getElementById("intro");
-const scene = document.getElementById("scene");
-const particles = document.getElementById("particles");
+window.onload = () => {
 
-// Açılış ekranına tıklayınca
-intro.addEventListener("click", () => {
+    const kalp = document.querySelector(".kalp");
+    const yazi = document.querySelector("h1");
 
-    intro.style.opacity = "0";
+    kalp.style.opacity = "0";
+    yazi.style.opacity = "0";
 
     setTimeout(() => {
-        intro.style.display = "none";
-        scene.classList.remove("hidden");
+        kalp.style.transition = "1.5s";
+        yazi.style.transition = "1.5s";
 
-        startParticles();
+        kalp.style.opacity = "1";
+        yazi.style.opacity = "1";
 
-    }, 800);
+    }, 500);
 
-});
-
-// Küçük uçan kalpler
-function startParticles(){
-
-    setInterval(() => {
-
-        const heart = document.createElement("div");
-
-        heart.className = "particle";
-        heart.innerHTML = "💙";
-
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.fontSize = (10 + Math.random() * 18) + "px";
-        heart.style.animationDuration = (4 + Math.random() * 3) + "s";
-
-        particles.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        },7000);
-
-    },180);
-
-}
-
-// Fare hareket edince ekstra kalpler
-document.addEventListener("mousemove",(e)=>{
-
-    if(scene.classList.contains("hidden")) return;
-
-    const heart=document.createElement("div");
-
-    heart.className="particle";
-    heart.innerHTML="💙";
-
-    heart.style.left=e.clientX+"px";
-    heart.style.top=e.clientY+"px";
-    heart.style.fontSize="12px";
-
-    particles.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },2500);
-
-});
+};
