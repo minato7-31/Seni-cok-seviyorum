@@ -6,29 +6,32 @@
 }
 
 body{
-    background:linear-gradient(135deg,#000000,#081f4d);
     overflow:hidden;
+    background:#000;
     width:100vw;
     height:100vh;
 }
 
-/* İlk Sayfa */
+/* Açılış */
 
 #intro{
-    width:100%;
-    height:100vh;
+    position:fixed;
+    inset:0;
     display:flex;
+    flex-direction:column;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
-    color:white;
+    background:#000;
+    color:#fff;
     cursor:pointer;
-    transition:.8s;
+    transition:1s;
+    z-index:100;
 }
 
 #intro h1{
-    font-size:70px;
-    text-shadow:0 0 25px red;
+    font-size:65px;
+    color:#4b6cff;
+    text-shadow:0 0 25px #4b6cff;
 }
 
 #intro p{
@@ -37,87 +40,147 @@ body{
     opacity:.8;
 }
 
-/* Kalp Sayfası */
+.fade{
+    opacity:0;
+}
 
 .hidden{
     display:none;
 }
 
-#heartScreen{
-    width:100%;
-    height:100vh;
+/* Kalp Ekranı */
+
+#scene{
+    position:fixed;
+    inset:0;
     display:flex;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
+    background:black;
+    overflow:hidden;
 }
 
-/* Büyük Kalp */
+/* Kalp Kutusu */
+
+.heart-container{
+    position:relative;
+    width:700px;
+    height:700px;
+}
+
+/* Neon Kalpler */
 
 .heart{
-    width:220px;
-    height:220px;
-    position:relative;
-    transform:rotate(-45deg);
-    background:linear-gradient(
-        90deg,
-        #000000 50%,
-        #0b3d91 50%
-    );
-    animation:beat 1s infinite;
-    box-shadow:0 0 40px #0b3d91;
+    position:absolute;
+    top:50%;
+    left:50%;
+    border:5px solid #0b3dff;
+    border-radius:50%;
+    transform:translate(-50%,-50%) rotate(-45deg);
+    box-shadow:
+        0 0 20px #0b3dff,
+        0 0 40px #0b3dff,
+        0 0 80px #0b3dff;
+    animation:pulse 2.5s infinite ease-in-out;
 }
 
 .heart::before,
 .heart::after{
     content:"";
     position:absolute;
-    width:220px;
-    height:220px;
+    border:5px solid #0b3dff;
     border-radius:50%;
-    background:inherit;
+    box-shadow:
+        0 0 20px #0b3dff,
+        0 0 40px #0b3dff;
 }
 
 .heart::before{
-    top:-110px;
+    width:100%;
+    height:100%;
+    top:-50%;
     left:0;
 }
 
 .heart::after{
-    left:110px;
+    width:100%;
+    height:100%;
+    left:50%;
     top:0;
 }
 
-@keyframes beat{
+/* Boyutlar */
 
-    0%{
-        transform:rotate(-45deg) scale(1);
-    }
-
-    50%{
-        transform:rotate(-45deg) scale(1.1);
-    }
-
-    100%{
-        transform:rotate(-45deg) scale(1);
-    }
-
-}
+.h1{width:650px;height:650px;}
+.h2{width:560px;height:560px;}
+.h3{width:480px;height:480px;}
+.h4{width:400px;height:400px;}
+.h5{width:320px;height:320px;}
+.h6{width:240px;height:240px;}
+.h7{width:170px;height:170px;}
+.h8{width:100px;height:100px;}
 
 /* Yazı */
 
-#heartScreen h2{
+.message{
+    position:absolute;
+    bottom:60px;
+    width:100%;
+    text-align:center;
     color:white;
-    margin-top:80px;
-    font-size:35px;
-    text-shadow:0 0 15px white;
 }
 
-/* Küçük Kalpler */
+.message h2{
+    font-size:38px;
+    color:#7fa7ff;
+    text-shadow:0 0 20px #0b3dff;
+}
 
-.floating-heart{
-    position:absolute;
+.message p{
+    margin-top:15px;
+    font-size:20px;
+}
+
+/* Uçan Kalpler */
+
+#particles{
+    position:fixed;
+    inset:0;
     pointer-events:none;
-    z-index:999;
-    filter:drop-shadow(0 0 10px red);
+}
+
+.particle{
+    position:absolute;
+    bottom:-50px;
+    color:#7fa7ff;
+    animation:fly linear forwards;
+    text-shadow:0 0 15px #0b3dff;
+}
+
+@keyframes fly{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:translate(-50%,-50%) rotate(-45deg) scale(0.95);
+    }
+
+    50%{
+        transform:translate(-50%,-50%) rotate(-45deg) scale(1);
+    }
+
+    100%{
+        transform:translate(-50%,-50%) rotate(-45deg) scale(0.95);
+    }
+
 }
