@@ -1,21 +1,50 @@
-function kalpOlustur(){
+const intro = document.getElementById("intro");
+const heartScreen = document.getElementById("heartScreen");
 
-    const heart=document.createElement("div");
+// İlk ekrana tıklanınca geçiş
+intro.addEventListener("click", () => {
+    intro.style.opacity = "0";
 
-    heart.className="heart";
-    heart.innerHTML="❤️";
+    setTimeout(() => {
+        intro.style.display = "none";
+        heartScreen.classList.remove("hidden");
 
-    heart.style.left=Math.random()*window.innerWidth+"px";
-    heart.style.top=window.innerHeight+"px";
+        // Kalpleri oluşturmaya başla
+        setInterval(createHeart, 200);
+    }, 700);
+});
 
-    heart.style.fontSize=(20+Math.random()*40)+"px";
+// Uçuşan küçük kalpler
+function createHeart() {
+    const heart = document.createElement("div");
+
+    heart.className = "floating-heart";
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+
+    heart.style.fontSize = (15 + Math.random() * 20) + "px";
 
     document.body.appendChild(heart);
 
-    setTimeout(()=>{
+    const randomX = (Math.random() - 0.5) * 200;
+
+    heart.animate([
+        {
+            transform: "translate(0,0)",
+            opacity: 1
+        },
+        {
+            transform: `translate(${randomX}px,-${window.innerHeight + 200}px)`,
+            opacity: 0
+        }
+    ], {
+        duration: 5000,
+        easing: "linear"
+    });
+
+    setTimeout(() => {
         heart.remove();
-    },6000);
-
+    }, 5000);
 }
-
-setInterval(kalpOlustur,150);
