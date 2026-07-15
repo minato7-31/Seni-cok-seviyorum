@@ -1,18 +1,11 @@
-function kalbiGoster() {
+const ekran = document.getElementById("ekran");
+const yaziAlan = document.getElementById("yaziAlan");
+const kalp = document.getElementById("kalp");
 
-    const yazi = document.getElementById("yazi");
-    const kalp = document.getElementById("kalp");
-    const kalpler = document.querySelectorAll(".ucan");
+ekran.addEventListener("click", () => {
 
-    // Yazıyı gizle
-    yazi.style.display = "none";
+    yaziAlan.style.display = "none";
 
-    // Uçan kalpleri gizle
-    kalpler.forEach(kalp => {
-        kalp.style.display = "none";
-    });
-
-    // Büyük kalbi göster
     kalp.style.display = "block";
 
-}
+});
