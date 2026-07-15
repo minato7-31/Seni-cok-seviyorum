@@ -1,263 +1,92 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background:#000;
-    overflow:hidden;
-    font-family:Arial,Helvetica,sans-serif;
+body {
+    height: 100vh;
+    background: #050b2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
 }
 
-.hidden{
-    display:none;
+.container {
+    text-align: center;
 }
 
-/* Açılış */
-
-#intro{
-    position:fixed;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#000;
-    z-index:999;
-    cursor:pointer;
-    transition:1s;
+h1 {
+    color: white;
+    font-size: 45px;
+    margin-bottom: 50px;
+    animation: yazı 2s ease-in-out infinite alternate;
 }
 
-.intro-box{
-    text-align:center;
+.kalp {
+    width: 150px;
+    height: 150px;
+    background: #001f5f;
+    position: relative;
+    transform: rotate(-45deg);
+    margin: auto;
+    animation: nefes 1.5s infinite ease-in-out;
+    box-shadow: 0 0 40px #003cff;
 }
 
-.intro-box h1{
-    color:#2d5bff;
-    font-size:65px;
-    text-shadow:
-    0 0 10px #2d5bff,
-    0 0 30px #2d5bff,
-    0 0 60px #2d5bff;
+.kalp::before,
+.kalp::after {
+    content: "";
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: #001f5f;
+    border-radius: 50%;
 }
 
-.intro-box p{
-    color:white;
-    margin-top:20px;
-    font-size:22px;
+.kalp::before {
+    top: -75px;
+    left: 0;
 }
 
-/* Kalp Sahnesi */
-
-#scene{
-    position:fixed;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    background:#000;
+.kalp::after {
+    left: 75px;
+    top: 0;
 }
 
-/* SVG */
 
-.heart-wrapper{
-    width:650px;
-    height:650px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+@keyframes nefes {
 
-.heart-svg{
-    width:100%;
-    height:100%;
-}
-
-.heart{
-    fill:none;
-    stroke:#163dff;
-    stroke-width:4;
-    filter:drop-shadow(0 0 8px #163dff)
-           drop-shadow(0 0 20px #163dff)
-           drop-shadow(0 0 40px #163dff);
-}
-
-/* Kalpler */
-
-.heart1{
-    transform:scale(1);
-    animation:beat 2s infinite;
-}
-
-.heart2{
-    transform:scale(.9);
-    opacity:.9;
-    animation:beat2 2s infinite;
-}
-
-.heart3{
-    transform:scale(.8);
-    opacity:.8;
-    animation:beat3 2s infinite;
-}
-
-.heart4{
-    transform:scale(.7);
-    opacity:.7;
-    animation:beat4 2s infinite;
-}
-
-.heart5{
-    transform:scale(.6);
-    opacity:.6;
-    animation:beat5 2s infinite;
-}
-
-.message{
-    position:absolute;
-    bottom:70px;
-    color:white;
-    text-align:center;
-}
-
-.message h2{
-    color:#2d5bff;
-    font-size:35px;
-    text-shadow:0 0 25px #2d5bff;
-}/* Kalp Animasyonları */
-
-@keyframes beat{
-
-    0%{
-        transform:scale(1);
-        opacity:1;
+    0% {
+        transform: rotate(-45deg) scale(1);
+        box-shadow: 0 0 30px #003cff;
     }
 
-    50%{
-        transform:scale(1.08);
-        opacity:.9;
+    50% {
+        transform: rotate(-45deg) scale(1.15);
+        box-shadow: 0 0 70px #0055ff;
     }
 
-    100%{
-        transform:scale(1);
-        opacity:1;
+    100% {
+        transform: rotate(-45deg) scale(1);
+        box-shadow: 0 0 30px #003cff;
     }
 
 }
 
-@keyframes beat2{
 
-    0%{
-        transform:scale(.9);
+@keyframes yazı {
+
+    from {
+        opacity: 0.6;
+        transform: translateY(0);
     }
 
-    50%{
-        transform:scale(.98);
-    }
-
-    100%{
-        transform:scale(.9);
-    }
-
-}
-
-@keyframes beat3{
-
-    0%{
-        transform:scale(.8);
-    }
-
-    50%{
-        transform:scale(.88);
-    }
-
-    100%{
-        transform:scale(.8);
-    }
-
-}
-
-@keyframes beat4{
-
-    0%{
-        transform:scale(.7);
-    }
-
-    50%{
-        transform:scale(.78);
-    }
-
-    100%{
-        transform:scale(.7);
-    }
-
-}
-
-@keyframes beat5{
-
-    0%{
-        transform:scale(.6);
-    }
-
-    50%{
-        transform:scale(.68);
-    }
-
-    100%{
-        transform:scale(.6);
-    }
-
-}
-
-/* Uçan Kalpler */
-
-#particles{
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    overflow:hidden;
-}
-
-.particle{
-    position:absolute;
-    color:#2d5bff;
-    text-shadow:
-        0 0 8px #2d5bff,
-        0 0 18px #2d5bff,
-        0 0 35px #2d5bff;
-    animation:fly linear forwards;
-}
-
-@keyframes fly{
-
-    0%{
-        transform:translateY(0) scale(.8);
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(-120vh) scale(1.4);
-        opacity:0;
-    }
-
-}
-
-/* Responsive */
-
-@media(max-width:768px){
-
-    .heart-wrapper{
-        width:360px;
-        height:360px;
-    }
-
-    .intro-box h1{
-        font-size:42px;
-    }
-
-    .message h2{
-        font-size:24px;
+    to {
+        opacity: 1;
+        transform: translateY(-10px);
     }
 
 }
